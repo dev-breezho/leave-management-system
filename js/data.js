@@ -9,6 +9,17 @@ const employees = [
         gender: "male",
         dateOfBirth: "1998-06-15",
         employmentStartDate: "2025-01-10"
+    },
+    {
+        employeeId: "NTO001",
+        firstName: "Brian",
+        surname: "Ntombini",
+        username: "briann",
+        password: "brnN678",
+        role: "employee",
+        gender: "male",
+        dateOfBirth: "1977-05-08",
+        employmentStartDate: "2018-02-01"
     }
 ];
 
