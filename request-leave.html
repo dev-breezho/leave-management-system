@@ -16,49 +16,60 @@
 
         <form id="leaveForm">
 
-            <label for="leaveType">Leave Type:</label>
-            <select id="leaveType" required>
-                <option value="">Select leave type</option>
-                <option value="annual">Annual Leave</option>
-                <option value="sick">Sick Leave</option>
-                <option value="maternity">Maternity Leave</option>
-                <option value="parental">Parental Leave</option>
-                <option value="familyResponsibility">Family Responsibility Leave</option>
-                <option value="study">Study Leave</option>
-                <option value="birthday">Birthday Leave</option>
-                <option value="unpaid">Unpaid Leave</option>
-            </select>
+            <div id="message"></div>
+            <br>
 
-            <label for="startDate">Start Date:</label>
-            <input type="date" id="startDate" required>
+             <div class="form-row">
+                <label for="leaveType">Leave Type</label>
+                <select id="leaveType" required class="leaveType">
+                    <option value="">Select leave type</option>
+                    <option value="annual">Annual Leave</option>
+                    <option value="sick">Sick Leave</option>
+                    <option value="maternity">Maternity Leave</option>
+                    <option value="parental">Parental Leave</option>
+                    <option value="familyResponsibility">Family Responsibility Leave</option>
+                    <option value="study">Study Leave</option>
+                    <option value="birthday">Birthday Leave</option>
+                    <option value="unpaid">Unpaid Leave</option>
+                </select>
+            </div>
 
-            <label for="endDate">End Date:</label>
-            <input type="date" id="endDate" required>
+            <div class="form-row">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" required class="dateSelector">
+            </div>
 
-            <label for="reason">Reason / Comments:</label>
-            <textarea id="reason" rows="4" required></textarea>
+            <div class="form-row">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" required class="dateSelector">
+            </div>
 
-            <label for="supportingDocument">
-                Supporting Document:
-            </label>
-            <input type="file" id="supportingDocument">
+            <div class="form-row">
+                <label for="reason">Reason / Comments</label>
+                <textarea id="reason" rows="4" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <label for="supportingDocument">
+                    Supporting Document
+                </label>
+                <input type="file" id="supportingDocument">
+            </div>
 
             <button type="button" id="calculateButton">
                 Calculate Leave
             </button>
 
-        </form>
+            <button type="button" id="cancelButton">
+                Cancel
+            </button>
 
-        <div id="message"></div>
+        </form>
 
         <div id="leavePreview"></div>
 
         <button type="button" id="submitButton" style="display: none;">
             Submit Leave Request
-        </button>
-
-        <button type="button" id="cancelButton">
-            Cancel
         </button>
 
     </div>

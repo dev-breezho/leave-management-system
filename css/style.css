@@ -1,7 +1,51 @@
 .dashboard-container {
-    width: 90%;
     max-width: 1000px;
-    margin: 30px auto;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #00000015;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+#historyWelcome {
+    text-align: center;
+}
+
+#leaveHistoryList {
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.admin-request {
+    text-align: left;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#backToDashboard {
+    display: block;
+    margin: 20px auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: start;
 }
 
 .dashboard-header {
@@ -51,4 +95,14 @@
 .dashboard-actions button {
     padding: 10px 15px;
     margin-right: 10px;
+}
+
+.leaveType {
+    width: max-content;
+    max-width: 100%;
+}
+
+.dateSelector {
+    width: 200px;
+    box-sizing: border-box;
 }

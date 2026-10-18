@@ -69,6 +69,7 @@
 
         const employeeBalance = balances.find(function (balance) {
             return balance.employeeId === currentUser.employeeId;
+            console.log("Employee Balance:", employeeBalance);
         });
 
         leaveBalances.innerHTML = `
@@ -119,24 +120,26 @@
 
         const logoutButton = document.getElementById("logoutButton");
 
-        logoutButton.addEventListener("click", function () {
-            localStorage.removeItem("currentUser");
-            window.location.href = "index.html";
-        });
+        if (logoutButton) {
+            logoutButton.addEventListener("click", function () {
+                localStorage.removeItem("currentUser");
+                window.location.href = "index.html";
+            });
+        }
 
-        const requestLeaveButton =
-            document.getElementById("requestLeaveButton");
+        const requestLeaveButton = document.getElementById("requestLeaveButton");
 
         requestLeaveButton.addEventListener("click", function () {
             window.location.href = "request-leave.html";
         });
 
-        const leaveHistoryButton =
-            document.getElementById("leaveHistoryButton");
+        const leaveHistoryButton = document.getElementById("leaveHistoryButton");
 
-        leaveHistoryButton.addEventListener("click", function () {
-            window.location.href = "leave-history.html";
-        });
+        if (leaveHistoryButton) {
+            leaveHistoryButton.addEventListener("click", function () {
+                window.location.href = "leave-history.html";
+            });
+        }
     </script>
 
 </body>

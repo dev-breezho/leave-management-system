@@ -288,3 +288,11 @@ function rejectAdminRequest(requestId) {
     localStorage.setItem("leaveRequests", JSON.stringify(latestRequests));
     renderAdminDashboard(`Request ${requestId} rejected. No leave balance was deducted.`);
 }
+
+const leaveHistoryButton = document.getElementById("leaveHistoryButton");
+
+if (leaveHistoryButton) {
+    leaveHistoryButton.addEventListener("click", function () {
+        window.location.href = "leave-history.html";
+    });
+}

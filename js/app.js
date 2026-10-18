@@ -9,11 +9,9 @@ if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const username =
-            document.getElementById("username").value;
+        const username = document.getElementById("username").value;
 
-        const password =
-            document.getElementById("password").value;
+        const password = document.getElementById("password").value;
 
         const employees = getEmployees();
         const admin = getAdmin();
@@ -36,8 +34,8 @@ if (loginForm) {
 
         } else {
 
-            loginMessage.textContent =
-                "Invalid username or password.";
+            loginMessage.textContent = "Invalid username or password.";
+            loginMessage.style.color = "red";
         }
     });
 }
@@ -52,20 +50,15 @@ if (leaveForm) {
         window.location.href = "index.html";
     }
 
-    const calculateButton =
-        document.getElementById("calculateButton");
+    const calculateButton = document.getElementById("calculateButton");
 
-    const submitButton =
-        document.getElementById("submitButton");
+    const submitButton = document.getElementById("submitButton");
 
-    const cancelButton =
-        document.getElementById("cancelButton");
+    const cancelButton = document.getElementById("cancelButton");
 
-    const message =
-        document.getElementById("message");
+    const message = document.getElementById("message");
 
-    const leavePreview =
-        document.getElementById("leavePreview");
+    const leavePreview = document.getElementById("leavePreview");
 
     let calculatedLeave = null;
 
@@ -75,54 +68,42 @@ if (leaveForm) {
         leavePreview.innerHTML = "";
         submitButton.style.display = "none";
 
-        const leaveType =
-            document.getElementById("leaveType").value;
+        const leaveType = document.getElementById("leaveType").value;
 
-        const startDate =
-            document.getElementById("startDate").value;
+        const startDate = document.getElementById("startDate").value;
 
-        const endDate =
-            document.getElementById("endDate").value;
+        const endDate = document.getElementById("endDate").value;
 
-        const reason =
-            document.getElementById("reason").value.trim();
+        const reason = document.getElementById("reason").value.trim();
 
-        const supportingDocument =
-            document.getElementById("supportingDocument").files[0];
+        const supportingDocument = document.getElementById("supportingDocument").files[0];
 
         if (!leaveType || !startDate || !endDate || !reason) {
-            message.textContent =
-                "Please complete all required fields.";
+            message.textContent = "Please complete all required fields.";
+            message.style.color = "red";
 
             return;
         }
 
         if (new Date(endDate) < new Date(startDate)) {
-            message.textContent =
-                "The end date cannot be before the start date.";
+            message.textContent = "The end date cannot be before the start date.";
 
             return;
         }
 
-        if (
-            (leaveType === "sick" ||
-                leaveType === "maternity") &&
-            !supportingDocument
-        ) {
-            message.textContent =
-                "A supporting document is required for this leave type.";
+        if ((leaveType === "sick" || leaveType === "maternity") && !supportingDocument) {
+            message.textContent = "A supporting document is required for this leave type.";
 
             return;
         }
 
         try {
 
-            const workingDays =
-                await calculateWorkingDays(startDate, endDate);
+            const workingDays = await calculateWorkingDays(startDate, endDate);
 
             if (workingDays <= 0) {
-                message.textContent =
-                    "The selected dates contain no working days.";
+                message.textContent = "The selected dates contain no working days.";
+                message.style.color = "red";
 
                 return;
             }
@@ -136,17 +117,18 @@ if (leaveForm) {
 
             if (!employeeBalance) {
                 message.textContent = "Your leave balances could not be found.";
+                message.style.color = "red";
                 return;
             }
 
             const leaveRequests = getLeaveRequests();
 
             // Check eligibility for this leave type.
-            const eligibilityMessage =
-                validateLeaveEligibility(leaveType, currentUser);
+            const eligibilityMessage = validateLeaveEligibility(leaveType, currentUser);
 
             if (eligibilityMessage) {
                 message.textContent = eligibilityMessage;
+                message.style.color = "red";
                 return;
             }
 
@@ -159,8 +141,8 @@ if (leaveForm) {
                     leaveRequests
                 )
             ) {
-                message.textContent =
-                    "These dates overlap with an existing pending or approved leave request.";
+                message.textContent = "These dates overlap with an existing pending or approved leave request.";
+                message.style.color = "red";
                 return;
             }
 
@@ -196,10 +178,7 @@ if (leaveForm) {
                 endDate: endDate,
                 workingDays: workingDays,
                 reason: reason,
-                supportingDocument:
-                    supportingDocument
-                        ? supportingDocument.name
-                        : ""
+                supportingDocument: supportingDocument ? supportingDocument.name : ""
             };
 
             leavePreview.innerHTML = `
@@ -270,8 +249,7 @@ if (leaveForm) {
             endDate: calculatedLeave.endDate,
             workingDays: calculatedLeave.workingDays,
             reason: calculatedLeave.reason,
-            supportingDocument:
-                calculatedLeave.supportingDocument,
+            supportingDocument: calculatedLeave.supportingDocument,
             status: "Pending",
             submittedDate: new Date().toISOString(),
             decisionDate: null,
@@ -281,9 +259,7 @@ if (leaveForm) {
 
         leaveRequests.push(newRequest);
 
-        localStorage.setItem(
-            "leaveRequests",
-            JSON.stringify(leaveRequests)
+        localStorage.setItem("leaveRequests", JSON.stringify(leaveRequests)
         );
 
         alert("Leave request submitted successfully.");
